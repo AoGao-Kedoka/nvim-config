@@ -15,6 +15,7 @@ vim.api.nvim_set_keymap(
     { noremap = true, silent = true }
 )
 
+-- Ctril+R to search in files
 vim.api.nvim_set_keymap(
     "n",
     "<leader>fr",
