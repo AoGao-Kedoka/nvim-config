@@ -140,9 +140,37 @@ return {
 					end,
 					cwd = "${workspaceFolder}",
 					stopAtEntry = false,
+					setupCommands = {
+						{
+							text = "-enable-pretty-printing",
+							description = "enable pretty printing",
+							ignoreFailures = false,
+						},
+					},
 				},
 			}
 			dap.configurations.c = dap.configurations.cpp
+			dap.configurations.rust = {
+				{
+					name = "Debug Rust",
+					type = "cppdbg",
+					request = "launch",
+
+					program = function()
+						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
+					end,
+
+					cwd = "${workspaceFolder}",
+					stopAtEntry = false,
+					setupCommands = {
+						{
+							text = "-enable-pretty-printing",
+							description = "enable pretty printing",
+							ignoreFailures = false,
+						},
+					},
+				},
+			}
 
 			-- DAP UI setup
 			dapui.setup({
